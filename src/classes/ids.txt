@@ -1,0 +1,4 @@
+0: Air
+1: Floor
+2: Wall
+3: Player
