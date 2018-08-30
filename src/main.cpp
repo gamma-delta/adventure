@@ -44,7 +44,7 @@ void refresh_map() { //Go through every X and Y position in the map, and get eac
 			for (Object* _object : _objects) {
 				if (_object->priority > current_priority) { //if the priority is good
 					disp_map[y][x] = _object->disp; //assign the display
-					current_priority = _objects[i]->priority; //update priority
+					current_priority = _object->priority; //update priority
 				}
 			}
 			current_priority = -1; //reset priority
