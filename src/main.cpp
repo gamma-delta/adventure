@@ -41,9 +41,9 @@ void refresh_map() { //Go through every X and Y position in the map, and get eac
 	for (int y = 0; y < MAP_HEIGHT; y++) {
 		for (int x = 0; x < MAP_WIDTH; x++) {
 			_objects = getObjectsAtXY(x, y);
-			for (int i = 0; i < (short) _objects.size(); i++) {
-				if (_objects[i]->priority > current_priority) { //if the priority is good
-					disp_map[y][x] = _objects[i]->disp; //assign the display
+			for (Object* _object : _objects) {
+				if (_object->priority > current_priority) { //if the priority is good
+					disp_map[y][x] = _object->disp; //assign the display
 					current_priority = _objects[i]->priority; //update priority
 				}
 			}
@@ -68,7 +68,8 @@ void display_map() {
 int main() {
 	std::cout << "Starting...\n";
 	//Set up the map
-	Player player (15, 8); //set up the player
+
+	Player player (5, 8); //set up the player
 	introduce_object(player);
 
 	for (int y = 0; y < MAP_HEIGHT; y++) {
@@ -84,9 +85,7 @@ int main() {
 		refresh_map();
 		display_map();
 
-		disp_map[player.y][player.x] = player.disp;
-
-		std::cout << "Player pos: " << player.x << ", " << player.y << "\n";
+		std::cout << "Player pos: " << player.x << ", " << player.y << " | " << player.disp << "\n";
 
 		//Input
 		input = ' ';
